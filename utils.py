@@ -16,6 +16,8 @@ for ch in sample_space:
     characters.add(ch)
 characters = sorted(characters)
 char_to_labels = {char:idx for idx, char in enumerate(characters)}
+labels_to_char = {val:key for key, val in char_to_labels.items()}
+
 def generate_arrays(df, resize=True, img_height=50, img_width=200):
     """Generates image array and labels array from a dataframe.
     
@@ -132,9 +134,10 @@ class DataGenerator(keras.utils.Sequence):
         if self.shuffle:
             np.random.shuffle(self.indices)
 
+    
 class CTCLayer(layers.Layer):
-    def __init__(self, name=None):
-        super().__init__(name=name)
+    def __init__(self, name=None,**kwargs):
+        super().__init__(name=name,**kwargs)
         self.loss_fn = keras.backend.ctc_batch_cost
 
     def call(self, y_true, y_pred, input_length, label_length):
