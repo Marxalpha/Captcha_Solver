@@ -17,3 +17,5 @@ Length of each captcha is 5
 1. Change the path to the training dataset in model.py
 2. Change the path to the model which would be saved in model.py
 3. Run model.py
+
+Thanks sai!!!
